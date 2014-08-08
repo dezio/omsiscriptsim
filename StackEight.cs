@@ -15,12 +15,17 @@ namespace OmsiScriptExampler {
 
         private readonly T[] _stack = new T[8];
 
+        /// <summary>
+        /// Initializes a new StackEight object.
+        /// </summary>
         protected StackEight() {
-            for (int i = 0; i < 8; i++) {
-                _stack[i] = default(T);
-            } // for end
+            this.Clear();
         }
 
+        /// <summary>
+        /// Pushes an item.
+        /// </summary>
+        /// <param name="item"></param>
         public void Push(T item) {
             for (int i = 7; i > 0; i--) {
                 _stack[i] = _stack[i - 1];
@@ -29,10 +34,30 @@ namespace OmsiScriptExampler {
             OnStateChanged();
         }
 
+
+        /// <summary>
+        /// Gets an item from its index.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public T GetItemAt(int index) {
             return _stack[index];
         }
-        
+
+        public T Pop() {
+            var item = GetItemAt(0);
+            for (int i = 1; i < 7; i++) {
+                _stack[i - 1] = _stack[i];
+            } // for end
+
+            _stack[7] = default(T);
+
+            return item;
+        }
+
+        /// <summary>
+        /// Clears the stack.
+        /// </summary>
         public void Clear() {
             for (int i = 0; i < 8; i++) {
                 _stack[i] = default(T);

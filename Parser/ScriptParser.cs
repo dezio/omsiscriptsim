@@ -72,7 +72,7 @@ namespace OmsiScriptExampler.Parser {
                     AddToken(new FloatLiteralToken(float.Parse(num)), startIndex);
                     continue;
                 } // if end
-                #endregion 
+                #endregion
 
                 #region Mathematicals
                 if (code[i] == '+') {
@@ -118,6 +118,10 @@ namespace OmsiScriptExampler.Parser {
                     AddToken(new StringLiteralToken(value), startIndex);
                     continue;
                 }
+
+                if (code[i] == '$') {
+
+                } // if end
                 #endregion
             } // for end
         }

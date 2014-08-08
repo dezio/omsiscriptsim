@@ -116,22 +116,25 @@ namespace OmsiScriptExampler.Parser {
                 if (abstractToken is MathOperationToken) {
                     var mathOp = abstractToken as MathOperationToken;
                     if (mathOp.Operator == "+") {
-                        var addition = Context.FloatStack.GetItemAt(0) + Context.FloatStack.GetItemAt(1);
-                        Context.FloatStack.Clear();
+                        var a = Context.FloatStack.Pop();
+                        var b = Context.FloatStack.Pop();
+
+                        var addition = a + b;
                         Context.FloatStack.Push(addition);
                         handled = true;
                     } // if end
 
                     if (mathOp.Operator == "-") {
-                        var substract = Context.FloatStack.GetItemAt(1) - Context.FloatStack.GetItemAt(0);
-                        Context.FloatStack.Clear();
+                        var a = Context.FloatStack.Pop();
+                        var b = Context.FloatStack.Pop();
+
+                        var substract = b - a;
                         Context.FloatStack.Push(substract);
                         handled = true;
                     } // if end
 
                     if (mathOp.Operator == "/") {
                         var divide = Context.FloatStack.GetItemAt(1) / Context.FloatStack.GetItemAt(0);
-                        Context.FloatStack.Clear();
                         Context.FloatStack.Push(divide);
                         handled = true;
                     } // if end

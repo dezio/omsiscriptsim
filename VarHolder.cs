@@ -19,6 +19,7 @@ namespace OmsiScriptExampler {
             get;
             private set;
         }
+
         public Dictionary<String, T> VariablesValues {
             get;
             set;
@@ -34,7 +35,7 @@ namespace OmsiScriptExampler {
         }
 
         public virtual void Set(String name) {
-
+            throw new NotImplementedException();
         }
 
         public T Get(String name) {

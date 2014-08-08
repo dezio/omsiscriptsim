@@ -33,10 +33,7 @@ namespace OmsiScriptExampler {
                 return;
             } // if end
             var lineNumber = richTextBox1.Text.Take(currentTokenChangedEventHandler.CurrentToken.Index).Count(c => c == '\n') + 1;
-
             this.lblStatusStep.Text = string.Format("{0} @Line {1}; Index {2}", TokenDescriptor.GetDescriptor(currentTokenChangedEventHandler.CurrentToken), lineNumber, currentTokenChangedEventHandler.CurrentToken.Index);
-            this.richTextBox1.Focus();
-            this.richTextBox1.Select(currentTokenChangedEventHandler.CurrentToken.Index, 1);
             frmDebugger.richTextBox2.AppendText(TokenDescriptor.GetDescriptor(currentTokenChangedEventHandler.CurrentToken));
             frmDebugger.richTextBox2.AppendText("\n== STACK ==\n");
             frmDebugger.richTextBox2.AppendText(_context.FloatStack.ToString());

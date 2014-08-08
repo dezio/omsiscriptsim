@@ -8,16 +8,9 @@ using OmsiScriptExampler.Parser;
 namespace OmsiScriptExampler {
     public class ScriptContext {
 
-        /// <summary>
-        /// The float stack.
-        /// </summary>
-        public FloatStack FloatStack {
-            get;
-            set;
-        }
 
         /// <summary>
-        /// The script parser
+        /// Gets or sets the script parser
         /// </summary>
         public ScriptParser Parser {
             get;
@@ -25,27 +18,45 @@ namespace OmsiScriptExampler {
         }
 
         /// <summary>
-        /// The script executor
+        /// Gets or sets the script executor
         /// </summary>
         public ScriptRunner Runner {
             get;
             set;
         }
 
+        /// <summary>
+        /// Gets or sets the holder for floating variables
+        /// </summary>
         public FloatVarHolder FloatVarHolder {
             get;
             set;
         }
 
+        /// <summary>
+        /// Gets or sets the holder for string variables
+        /// </summary>
         public StringVarHolder StringVarHolder {
             get;
             set;
         }
 
+        /// <summary>
+        /// Gets or sets the stack of strings.
+        /// </summary>
         public StringStack StringStack {
             get;
             set;
         }
+
+        /// <summary>
+        /// Gets or sets the stack of floats.
+        /// </summary>
+        public FloatStack FloatStack {
+            get;
+            set;
+        }
+
 
         public ScriptContext() {
             Runner = new ScriptRunner(this);

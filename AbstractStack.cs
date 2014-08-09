@@ -1,24 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace OmsiScriptExampler {
-    public class StackEight<T> {
+    public class AbstractStack<T> {
         public event EventHandler StateChanged;
 
         protected virtual void OnStateChanged() {
             EventHandler handler = StateChanged;
-            if (handler != null) handler(this, EventArgs.Empty);
+            if (handler != null)
+                handler(this, EventArgs.Empty);
         }
 
-        private readonly T[] _stack = new T[8];
+        private const int StackCapacity = 8;
+
+        private readonly T[] _stack = new T[StackCapacity];
 
         /// <summary>
-        /// Initializes a new StackEight object.
+        /// Initializes a new AbstractStack object.
         /// </summary>
-        protected StackEight() {
+        protected AbstractStack() {
             this.Clear();
         }
 
@@ -27,7 +31,7 @@ namespace OmsiScriptExampler {
         /// </summary>
         /// <param name="item"></param>
         public void Push(T item) {
-            for (int i = 7; i > 0; i--) {
+            for (int i = StackCapacity - 1; i > 0; i--) {
                 _stack[i] = _stack[i - 1];
             } // for end
             _stack[0] = item;
@@ -44,9 +48,13 @@ namespace OmsiScriptExampler {
             return _stack[index];
         }
 
+        /// <summary>
+        /// Pops an item and returns it.
+        /// </summary>
+        /// <returns></returns>
         public T Pop() {
             var item = GetItemAt(0);
-            for (int i = 1; i < 7; i++) {
+            for (int i = 1; i < StackCapacity - 1; i++) {
                 _stack[i - 1] = _stack[i];
             } // for end
 
@@ -56,39 +64,36 @@ namespace OmsiScriptExampler {
         }
 
         /// <summary>
-        /// Clears the stack.
+        /// Clears the abstractStack.
         /// </summary>
         public void Clear() {
-            for (int i = 0; i < 8; i++) {
+            for (int i = 0; i < StackCapacity - 1; i++) {
                 _stack[i] = default(T);
             } // for end
             OnStateChanged();
         }
+
 
         public override string ToString() {
             String str = "";
 
             int maxChars = 0;
 
-            for (int i = 0; i < 8; i++) {
-                maxChars = Math.Max(maxChars, GetItemAt(i).ToString().Length);
+            maxChars = _stack.Max(a => a.ToString().Length) + 1;
+
+            for (int i = 0; i < StackCapacity; i++) {
+                str += i.ToString(CultureInfo.InvariantCulture).PadRight(maxChars) + "| ";
             } // for end
 
-            maxChars++;
-            for (int i = 0; i < 8; i++) {
-                str += i.ToString().PadRight(maxChars);
-                str += "| ";
-            } // for end
-
-            int lineWidth = str.Length;
+            var lineWidth = str.Length;
 
             str += "\n";
 
             str += "".PadRight(lineWidth, '─');
             str += "\n";
 
-            for (int i = 0; i < 8; i++) {
-                str += GetItemAt(i).ToString().PadRight(maxChars);
+            for (var i = 0; i < StackCapacity; i++) {
+                str += GetItemAt(i).ToString().PadRight(maxChars) + "| ";
                 str += "│ ";
             } // for end
 

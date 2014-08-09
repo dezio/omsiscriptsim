@@ -9,7 +9,7 @@ namespace OmsiScriptExampler {
             if (!VariablesValues.ContainsKey(name)) {
                 RegisterVarName(name);
             } // if end
-            VariablesValues[name] = Context.StringStack.GetItemAt(0);
+            VariablesValues[name] = Context.StringAbstractStack.GetItemAt(0);
             OnStateChanged();
         }
     }

@@ -107,7 +107,7 @@
             this.tabStack.Padding = new System.Windows.Forms.Padding(3);
             this.tabStack.Size = new System.Drawing.Size(832, 502);
             this.tabStack.TabIndex = 2;
-            this.tabStack.Text = "Stack";
+            this.tabStack.Text = "abstractStack";
             this.tabStack.UseVisualStyleBackColor = true;
             // 
             // stringStackInspector1
@@ -115,7 +115,7 @@
             this.stringStackInspector1.Location = new System.Drawing.Point(7, 88);
             this.stringStackInspector1.Name = "stringStackInspector1";
             this.stringStackInspector1.Size = new System.Drawing.Size(442, 83);
-            this.stringStackInspector1.Stack = null;
+            this.stringStackInspector1.AbstractStack = null;
             this.stringStackInspector1.TabIndex = 5;
             this.stringStackInspector1.Text = "stringStackInspector1";
             // 
@@ -124,7 +124,7 @@
             this.floatStackInspector1.Location = new System.Drawing.Point(6, 7);
             this.floatStackInspector1.Name = "floatStackInspector1";
             this.floatStackInspector1.Size = new System.Drawing.Size(498, 74);
-            this.floatStackInspector1.Stack = null;
+            this.floatStackInspector1.AbstractStack = null;
             this.floatStackInspector1.TabIndex = 4;
             this.floatStackInspector1.Text = "floatStackInspector1";
             // 

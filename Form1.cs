@@ -17,8 +17,8 @@ namespace OmsiScriptExampler {
 
         public Form1() {
             InitializeComponent();
-            frmDebugger.floatStackInspector1.Stack = _context.FloatStack;
-            frmDebugger.stringStackInspector1.Stack = _context.StringStack;
+            frmDebugger.floatStackInspector1.AbstractStack = _context.FloatAbstractStack;
+            frmDebugger.stringStackInspector1.AbstractStack = _context.StringAbstractStack;
             _context.FloatVarHolder.StateChanged += VarHolderOnStateChanged;
             _context.Runner.CurrentTokenChanged += RunnerOnCurrentTokenChanged;
         }
@@ -36,7 +36,7 @@ namespace OmsiScriptExampler {
             this.lblStatusStep.Text = string.Format("{0} @Line {1}; Index {2}", TokenDescriptor.GetDescriptor(currentTokenChangedEventHandler.CurrentToken), lineNumber, currentTokenChangedEventHandler.CurrentToken.Index);
             frmDebugger.richTextBox2.AppendText(TokenDescriptor.GetDescriptor(currentTokenChangedEventHandler.CurrentToken));
             frmDebugger.richTextBox2.AppendText("\n== STACK ==\n");
-            frmDebugger.richTextBox2.AppendText(_context.FloatStack.ToString());
+            frmDebugger.richTextBox2.AppendText(_context.FloatAbstractStack.ToString());
             frmDebugger.richTextBox2.AppendText("\n== == == ==\n\n");
         }
 

@@ -42,17 +42,17 @@ namespace OmsiScriptExampler {
         }
 
         /// <summary>
-        /// Gets or sets the stack of strings.
+        /// Gets or sets the abstractStack of strings.
         /// </summary>
-        public StringStack StringStack {
+        public StringAbstractStack StringAbstractStack {
             get;
             set;
         }
 
         /// <summary>
-        /// Gets or sets the stack of floats.
+        /// Gets or sets the abstractStack of floats.
         /// </summary>
-        public FloatStack FloatStack {
+        public FloatAbstractStack FloatAbstractStack {
             get;
             set;
         }
@@ -60,8 +60,8 @@ namespace OmsiScriptExampler {
 
         public ScriptContext() {
             Runner = new ScriptRunner(this);
-            FloatStack = new FloatStack();
-            StringStack = new StringStack();
+            FloatAbstractStack = new FloatAbstractStack();
+            StringAbstractStack = new StringAbstractStack();
             Parser = new ScriptParser();
             FloatVarHolder = new FloatVarHolder(this);
             StringVarHolder = new StringVarHolder(this);

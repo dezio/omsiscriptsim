@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace OmsiScriptExampler {
-    public class FloatStack: StackEight<float> {
+    public class FloatAbstractStack: AbstractStack<float> {
 
     }
 }

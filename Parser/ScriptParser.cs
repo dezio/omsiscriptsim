@@ -95,6 +95,25 @@ namespace OmsiScriptExampler.Parser {
                     continue;
                 } // if end
 
+                if (code[i] == '>') {
+                    AddToken(new MathOperationToken(">"), i);
+                    continue;
+                } // if end
+
+                if (code[i] == '<') {
+                    AddToken(new MathOperationToken("<"), i);
+                    continue;
+                } // if end
+
+                if (code[i] == '=') {
+                    AddToken(new MathOperationToken("="), i);
+                    continue;
+                } // if end
+
+                if (code[i] == '!') {
+                    AddToken(new MathOperationToken("!"), i);
+                    continue;
+                } // if end
                 #endregion
 
                 #region Special Mathematicals

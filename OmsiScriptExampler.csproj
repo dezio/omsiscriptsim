@@ -45,7 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusFileLoader.cs" />
-    <Compile Include="FloatStack.cs" />
+    <Compile Include="FloatAbstractStack.cs" />
     <Compile Include="FloatStackInspector.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -68,11 +68,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScriptContext.cs" />
-    <Compile Include="StackEight.cs" />
+    <Compile Include="AbstractStack.cs" />
     <Compile Include="StackInspector.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="StringStack.cs" />
+    <Compile Include="StringAbstractStack.cs" />
     <Compile Include="StringStackInspector.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -100,6 +100,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

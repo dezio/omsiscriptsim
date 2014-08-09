@@ -8,34 +8,34 @@ using System.Windows.Forms;
 
 namespace OmsiScriptExampler {
     public class StackInspector<T> : Control {
-        private StackEight<T> _stack;
+        private AbstractStack<T> _abstractStack;
 
-        public StackInspector(StackEight<T> stack) {
-            Stack = stack;
-            Stack.StateChanged += StackOnStateChanged;
+        public StackInspector(AbstractStack<T> abstractStack) {
+            AbstractStack = abstractStack;
+            AbstractStack.StateChanged += AbstractStackOnStateChanged;
         }
 
         public StackInspector() {
 
         }
 
-        private void StackOnStateChanged(object sender, EventArgs eventArgs) {
+        private void AbstractStackOnStateChanged(object sender, EventArgs eventArgs) {
             this.Invalidate();
         }
 
-        public StackEight<T> Stack {
+        public AbstractStack<T> AbstractStack {
             get {
-                return _stack;
+                return _abstractStack;
             }
             set {
-                _stack = value;
-                if (_stack == null) return;
-                _stack.StateChanged += StackOnStateChanged;
+                _abstractStack = value;
+                if (_abstractStack == null) return;
+                _abstractStack.StateChanged += AbstractStackOnStateChanged;
             }
         }
 
         protected override void OnPaint(PaintEventArgs e) {
-            if (Stack == null) {
+            if (AbstractStack == null) {
                 return;
             }
             e.Graphics.Clear(Color.White);
@@ -43,7 +43,7 @@ namespace OmsiScriptExampler {
             var rowHeight = this.Height / 2;
             for (int i = 0; i < 8; i++) {
                 e.Graphics.DrawString(i.ToString(), this.Font, Brushes.Black, new PointF(colWidth * i, 0));
-                var value = Stack.GetItemAt(i);
+                var value = AbstractStack.GetItemAt(i);
                 if (value == null)
                     continue;
                 e.Graphics.DrawString(value.ToString(), this.Font, Brushes.Black, new PointF(colWidth * i, rowHeight));

@@ -119,17 +119,30 @@
   </resheader>
   <data name="richTextBox1.Text" xml:space="preserve">
     <value>{init}
-    2 (S.L.test1)
+    0 (S.L.test1)
     4 (S.L.test2)
     8 random (S.L.test3)
 	
      (L.L.test1) (L.L.test2) + (L.L.test3) + (S.L.summand)
 	 255 random (L.L.summand) / (S.L.summand) 
-     "Servus!" (S.$.Begruessung)
+     
+	 (L.L.test1)
+	 {if}
+		"Servus!" (S.$.Begruessung)
+	 {else}
+		"Hallo!" (S.$.Begruessung)
+	 {endif}
 {end}
 
 {frame}
     255 random (L.L.summand) - (S.L.summand) 
+	
+	(L.L.test1)
+	 {if}
+		"Servus!" (S.$.Begruessung)
+	 {else}
+		"Hallo!" (S.$.Begruessung)
+	 {endif}
 {end}</value>
   </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

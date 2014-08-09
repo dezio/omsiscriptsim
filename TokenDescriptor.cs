@@ -18,7 +18,7 @@ namespace OmsiScriptExampler {
         /// <returns></returns>
         public static String GetDescriptor(AbstractToken abstractToken) {
             if (abstractToken is FloatLiteralToken) {
-                return "Pusche die Zahl " + (abstractToken as FloatLiteralToken).Value + " in den Stack.";
+                return "Pusche die Zahl " + (abstractToken as FloatLiteralToken).Value + " in den abstractStack.";
             } // if end
 
             if (abstractToken is OperationToken) {
@@ -26,36 +26,36 @@ namespace OmsiScriptExampler {
 
                 if (opToken.LeftPoint == "L" && opToken.RightPoint == "L") {
                     var wert = opToken.Space;
-                    return "Pusche den Wert " + wert + " in den Stack";
+                    return "Pusche den Wert " + wert + " in den abstractStack";
                 } // if end
 
                 if (opToken.LeftPoint == "S" && opToken.RightPoint == "L") {
                     var wert = opToken.Space;
 
-                    return "Lese den Wert von Stack 0 und speichere ihn in " + wert;
+                    return "Lese den Wert von abstractStack 0 und speichere ihn in " + wert;
                 } // if end
 
                 if (opToken.LeftPoint == "S" && opToken.RightPoint == "$") {
                     var wert = opToken.Space;
 
-                    return "Lese den String-Wert von Stack 0 und speichere ihn in " + wert;
+                    return "Lese den String-Wert von abstractStack 0 und speichere ihn in " + wert;
                 } // if end
             } // if end
 
             if (abstractToken is MathOperationToken) {
                 var mathOp = abstractToken as MathOperationToken;
                 if (mathOp.Operator == "+")
-                    return "Addiere die ersten beiden Zahlen im Stack und pusche das Ergebnis.";
+                    return "Addiere die ersten beiden Zahlen im abstractStack und pusche das Ergebnis.";
                 if (mathOp.Operator == "-")
-                    return "Substrahiere die ersten beiden Zahlen im Stack und pusche das Ergebnis.";
+                    return "Substrahiere die ersten beiden Zahlen im abstractStack und pusche das Ergebnis.";
                 if (mathOp.Operator == "random")
-                    return "Erstelle eine zufällige Zahl mit n = [größer 0 kleiner Stack-Wert 0].";
+                    return "Erstelle eine zufällige Zahl mit n = [größer 0 kleiner abstractStack-Wert 0].";
                 if (mathOp.Operator == "/")
-                    return "Dividiere die ersten beiden Zahlen im Stack und pusche das Ergebnis.";
+                    return "Dividiere die ersten beiden Zahlen im abstractStack und pusche das Ergebnis.";
             } // if end
 
             if (abstractToken is StringLiteralToken) {
-                return "Pusche die Zeichenfolge \"" + (abstractToken as StringLiteralToken).Value + "\" in den String-Stack.";
+                return "Pusche die Zeichenfolge \"" + (abstractToken as StringLiteralToken).Value + "\" in den String-abstractStack.";
             } // if end
 
             if (abstractToken is BlockToken) {
